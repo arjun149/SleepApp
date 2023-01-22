@@ -19,7 +19,7 @@ The minimum R version required is 3.0 (R >= 3.0). Currently (1/21/23), this is s
 14. scales
 15. plotly
 
-Several trials and runs have shown unefficient time complexity with a runtime excedding 5 mins or so. It is likely (for sample.R) that time complexity surpasses O(2n^2). For this reason, a progess bar will be implemented in the newest updates. Shiny "reactivity" may also have some problems. 
+Several trials and runs have shown inefficient time complexity with a runtime excedding 5 minutes or so. It is likely (for sample.R) that time complexity surpasses O(2n^2). For this reason, a progess bar will be implemented in the newest updates. Shiny "reactivity" may also have some problems. 
 
 
 Additionally, work is being done to resolve some minor syntax errors along the way. 
