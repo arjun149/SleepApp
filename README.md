@@ -24,3 +24,5 @@ Several trials and runs have shown inefficient time complexity with a runtime ex
 
 Additionally, work is being done to resolve some minor syntax errors along the way. 
 
+Progress bars & transient notifications added - 5/29/23. 
+
