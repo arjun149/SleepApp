@@ -1,5 +1,11 @@
-# @Arcascope
+library(deSolve)
+library(tidyverse)
 
+
+  # Sleep transition parameters
+  Dwake <- 555.4
+  Dsleep <- 572.7
+  
   # Light processing parameters
   Alpha_0 <- 0.05
   P <- 1.5
@@ -167,6 +173,7 @@
     list(dxdt)
   }
   
+
   
   parms <- c()
   ic <- c(R=0.8240484019863923, Psi=2.4532409247791804, A=767.657, R1tot=584.24, N=0.78424752754260862)
@@ -184,6 +191,7 @@
   allSchoolStartOptions <- c(5, 6, 7, 8, 9, 10)
   sleepDurationSchool <- c()
   
+
   
   for (schoolStartLocalTimeInHours in allSchoolStartOptions) {
     allLux <<- -1 + numeric(numberOfDays * 24 / dt + 1)  # Sanity check vector to make sure we're getting the right lux
@@ -199,26 +207,28 @@
     
     homeostatLastWeekDiff <- head(homeostatDiff, 24 * 5 / dt)
     avgSleepSchool <- (24 * length(homeostatLastWeekDiff[homeostatLastWeekDiff < 0])/length(homeostatLastWeekDiff))
- #   cat(sprintf("Average sleep during school schedule over a week: %f\n", avgSleepSchool))
+   # cat(sprintf("Average sleep during school schedule over a week: %f\n", avgSleepSchool))
     sleepDurationSchool <- append(sleepDurationSchool, avgSleepSchool)
     homeostatFirstWeek <- head(out[,4], 24 * 7 / dt)
     homeostatToPrint <- homeostatLastWeek
+                               
   #  print("Sleep to wake transitions in week:")
     #print(((which(diff(sign(diff(homeostatToPrint))) != 0)+1) * dt) %% 24)
     
     
     
-    # plot(head(allLux, 24 * 3 / dt))
-    # par(new=TRUE)
-    # plot(head(out[,4], 24 * 3 / dt),col="green")
-   # 
-   # plot(tail(allLux, 24* 7 / dt))
- #   par(new=TRUE)
-#    plot(homeostatLastWeek, col="green")
+ #    plot(head(allLux, 24 * 3 / dt))
+  #   par(new=TRUE)
+ #    plot(head(out[,4], 24 * 3 / dt),col="green")
+    
+ #   plot(tail(allLux, 24* 7 / dt))
+#    par(new=TRUE)
+ #   plot(homeostatLastWeek, col="green")
     
     
   }
   
+sampleR <- function(sunR, sunS) {
   return(sleepDurationSchool)
   
 }
@@ -435,12 +445,12 @@ sample2 <- function(sunR, sunS) {
     
     
     
-    plot(head(allLux, 24 * 3 / dt))
-    par(new=TRUE)
-    plot(head(out[,4], 24 * 3 / dt),col="green")
-    plot(tail(allLux, 24* 7 / dt))
-    par(new=TRUE)
-    plot(homeostatLastWeek, col="green")
+   # plot(head(allLux, 24 * 3 / dt))
+   # par(new=TRUE)
+  #  plot(head(out[,4], 24 * 3 / dt),col="green")
+  #  plot(tail(allLux, 24* 7 / dt))
+   # par(new=TRUE)
+   # plot(homeostatLastWeek, col="green")
     
     
   }
@@ -533,3 +543,4 @@ sample3 <- function(sunR, sunS) {
   
   plot(times, lights)
 }
+
